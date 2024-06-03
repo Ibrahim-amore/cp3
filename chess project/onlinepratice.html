@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <style>
+        .board {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .black {
+            background-color: #769656;
+        }
+
+        .white {
+            background-color: #eeeed2;
+        }
+
+        .piece {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .chess-piece {
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="board" id="board"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const board = document.getElementById('board');
+            let isWhite = true;
+
+            for (let i = 0; i < 64; i++) {
+                const square = document.createElement('div');
+                square.classList.add('square');
+                if (isWhite) {
+                    square.classList.add('white');
+                } else {
+                    square.classList.add('black');
+                }
+                board.appendChild(square);
+                isWhite = !isWhite;
+                if ((i + 1) % 8 === 0) {
+                    isWhite = !isWhite;
+                }
+            }
+
+            // Add chess pieces
+            const piecesData = [
+                { type: 'rook', color: 'white', position: 'a1' },
+                { type: 'rook', color: 'white', position: 'h1' },
+                { type: 'knight', color: 'white', position: 'b1' },
+                { type: 'knight', color: 'white', position: 'g1' },
+                { type: 'bishop', color: 'white', position: 'c1' },
+                { type: 'bishop', color: 'white', position: 'f1' },
+                { type: 'queen', color: 'white', position: 'd1' },
+                { type: 'king', color: 'white', position: 'e1' },
+                { type: 'rook', color: 'black', position: 'a8' },
+                { type: 'rook', color: 'black', position: 'h8' },
+                { type: 'knight', color: 'black', position: 'b8' },
+                { type: 'knight', color: 'black', position: 'g8' },
+                { type: 'bishop', color: 'black', position: 'c8' },
+                { type: 'bishop', color: 'black', position: 'f8' },
+                { type: 'queen', color: 'black', position: 'd8' },
+                { type: 'king', color: 'black', position: 'e8' },
+            ];
+
+            piecesData.forEach(pieceData => {
+                const piece = document.createElement('div');
+                piece.classList.add('piece', 'chess-piece');
+                piece.style.backgroundImage = `url('images/${pieceData.color}_${pieceData.type}.png')`;
+                placePiece(piece, pieceData.position);
+                board.appendChild(piece);
+            });
+
+            // Add event listener for piece movement
+            const pieces = document.querySelectorAll('.piece');
+            pieces.forEach(piece => {
+                piece.addEventListener('mousedown', startDrag);
+            });
+
+            let currentPiece = null;
+
+            function startDrag(e) {
+                currentPiece = e.target;
+                document.addEventListener('mousemove', dragPiece);
+                document.addEventListener('mouseup', dropPiece);
+            }
+
+            function dragPiece(e) {
+                currentPiece.style.left = e.clientX - 20 + 'px';
+                currentPiece.style.top = e.clientY - 20 + 'px';
+            }
+
+            function dropPiece() {
+                document.removeEventListener('mousemove', dragPiece);
+                document.removeEventListener('mouseup', dropPiece);
+                const position = getPositionFromCoordinates(parseInt(currentPiece.style.left), parseInt(currentPiece.style.top));
+                if (position) {
+                    placePiece(currentPiece, position);
+                } else {
+                    // If the drop is outside the board, reset the piece's position
+                    currentPiece.style.left = '';
+                    currentPiece.style.top = '';
+                }
+            }
+
+            function getPositionFromCoordinates(x, y) {
+                const row = Math.floor(y / 50) + 1;
+                const col = String.fromCharCode(97 + Math.floor(x / 50));
+                if (row >= 1 && row <= 8 && col >= 'a' && col <= 'h') {
+                    return col + row;
+                }
+                return null;
+            }
+
+            function placePiece(piece, position) {
+                const square = document.querySelector(`.square[data-position="${position}"]`);
+                const rect = square.getBoundingClientRect();
+                piece.style.left = rect.left + 'px';
+                piece.style.top = rect.top + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

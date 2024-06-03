@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Registration</title>
+    <link rel="stylesheet" href="./css/signup.css">
+</head>
+<body>
+   <div class="container">
+    <div class="image">
+        <div class="avatar"><img src="./images/chess2.png" alt="Logo" srcset=""></div>
+        <label for="file-upload" class="file-upload">
+            <input type="file" id="file-upload" width="350px" height="200px">Upload Picture
+        </label>
+    </div>
+        
+    <h4>Chess Registration</h4>
+    <div class="registration-info">
+        <label for="full-name">Full Name</label>
+        <input type="text" name="full-name" id="full-name" placeholder="">
+
+        <label for="email">E-mail address</label>
+        <input type="email" name="email" id="email" placeholder="">
+        
+        <label for="date">Date of birth</label>
+        <input type="date" name="date" id="date" placeholder="">
+
+        <label for="number">Phone No</label>
+        <input type="number" name="number" id="number" placeholder="">
+        
+        <label for="college">Name of College</label>
+        <input type="text" name="college" id="college" placeholder="">
+    </div>
+
+    <div>
+        <h4>Address info</h4>
+    
+        <div class="address-info-1">
+            <tbody>
+            <label for="nationality"></label>
+            <select id="nationality" name="nationality">
+                <option value="" disabled selected>Nationality</option>
+                <option value="algeria">Algeria</option>
+                <option value="angola">Angola</option>
+                <option value="benin">Benin</option>
+                <option value="botswana">Botswana</option>
+                <option value="burkina-faso">Burkina Faso</option>
+                <option value="burundi">Burundi</option>
+                <option value="cape-verde">Cape Verde</option>
+                <option value="cameroon">Cameroon</option>
+                <option value="central-african-republic">Central African Republic</option>
+                <option value="chad">Chad</option>
+                <option value="comoros">Comoros</option>
+                <option value="congo-brazzaville">Congo (Brazzaville)</option>
+                <option value="congo-kinshasa">Congo (Kinshasa)</option>
+                <option value="djibouti">Djibouti</option>
+                <option value="egypt">Egypt</option>
+                <option value="equatorial-guinea">Equatorial Guinea</option>
+                <option value="eritrea">Eritrea</option>
+                <option value="eswatini">Eswatini</option>
+                <option value="ethiopia">Ethiopia</option>
+                <option value="gabon">Gabon</option>
+                <option value="gambia">Gambia</option>
+                <option value="ghana">Ghana</option>
+                <option value="guinea">Guinea</option>
+                <option value="guinea-bissau">Guinea-Bissau</option>
+                <option value="ivory-coast">Ivory Coast</option>
+                <option value="kenya">Kenya</option>
+                <option value="lesotho">Lesotho</option>
+                <option value="liberia">Liberia</option>
+                <option value="libya">Libya</option>
+                <option value="madagascar">Madagascar</option>
+                <option value="malawi">Malawi</option>
+                <option value="mali">Mali</option>
+                <option value="mauritania">Mauritania</option>
+                <option value="mauritius">Mauritius</option>
+                <option value="morocco">Morocco</option>
+                <option value="mozambique">Mozambique</option>
+                <option value="namibia">Namibia</option>
+                <option value="niger">Niger</option>
+                <option value="nigeria">Nigeria</option>
+                <option value="rwanda">Rwanda</option>
+                <option value="sao-tome-and-principe">São Tomé and Príncipe</option>
+                <option value="senegal">Senegal</option>
+                <option value="seychelles">Seychelles</option>
+                <option value="sierra-leone">Sierra Leone</option>
+                <option value="somalia">Somalia</option>
+                <option value="south-africa">South Africa</option>
+                <option value="south-sudan">South Sudan</option>
+                <option value="sudan">Sudan</option>
+                <option value="tanzania">Tanzania</option>
+                <option value="togo">Togo</option>
+                <option value="tunisia">Tunisia</option>
+                <option value="uganda">Uganda</option>
+                <option value="zambia">Zambia</option>
+                <option value="zimbabwe">Zimbabwe</option>
+            </select>
+            </tbody>
+            <tbody>
+            <label for="state"></label>
+            <select id="state" name="state">
+                <option value="" disabled selected>State</option>
+                <option value="abia">Abia</option>
+                <option value="adamawa">Adamawa</option>
+                <option value="akwa-ibom">Akwa Ibom</option>
+                <option value="anambra">Anambra</option>
+                <option value="bauchi">Bauchi</option>
+            </select> 
+            </tbody>
+            <br> <br>
+            <tbody>
+        </div>
+        <tbody>
+        <div class="address-info-2">
+            <label for="lga"></label>
+            <select id="lga" name="lga">
+                <option value="" disabled selected>LGA</option>
+                <option value="ikeja">Ikeja</option>
+                <option value="oyi">Oyi</option>
+                <option value="port-harcourt">Port Harcourt</option>
+                <option value="nasarawa">Nasarawa</option>
+            </select>
+            </tbody>
+        <tbody>
+            <input type="text"placeholder="Street">
+        </tbody>
+    </tr> 
+        </div>
+
+   <div class="apply">Apply for Training</div>
+
+    <div class="apply-for-training">
+        <input type="radio" id="yes" name="apply-for-training" value="yes">
+        <label for="yes">Yes</label><br>
+
+        <input type="radio" id="no" name="apply-for-training" value="no">
+        <label for="no">No</label><br>
+    </div>
+
+    <div class="category-info">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="">Beginner</option>
+            <option value="">Intermediate</option>
+            <option value="">Advanced</option>
+        </select>
+
+        <label for="create-password">Create Password</label>
+        <input type="password" name="create-password" id="create-password" placeholder="">
+
+        <label for="repeat-password">Repeat Password</label>
+        <input type="password" name="repeat-password" id="repeat-password" placeholder="">
+    </div>
+    <br><br>
+  <center><div><button type="submit">Submit Application</button></div>
+  </center>
+</div> 
+</body>
+</html>
